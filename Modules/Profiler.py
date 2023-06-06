@@ -1,6 +1,6 @@
 import pandas as pd
 # import pandas_profiling
-import ydata_profiling
+# import ydata_profiling
 import os
 from pathlib import Path
 
