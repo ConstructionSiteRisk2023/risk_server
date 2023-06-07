@@ -7,18 +7,19 @@ app = Flask(__name__, template_folder="templates")
 
 vis = Visualizer("20221118_cid_freq_srs.csv")
 
+
 @app.route('/params')
 def params():
     data = request.json
-    # data = jsonify(data)
-    xparam = data.pop("value_count")
-    print(xparam)
-    result = vis.select_data(data)
-    # print(result)
-    # print(len(result))
-    vis.save_graph(result,xparam)
+
+    vis.select_save_graph(data)
     return send_file(f'Data/temp.jpg', mimetype='image/gif')
-    # return data
+
+
+@app.route('/predict')
+def predict():
+    data = request.json
+    return str('0')
 
 
 if __name__ == "__main__":

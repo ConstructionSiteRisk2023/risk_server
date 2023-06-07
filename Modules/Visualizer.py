@@ -34,9 +34,14 @@ class Visualizer:
             temp = temp.loc[temp[idx] == dest]
         return temp
     
-    def save_graph(self,pddata,xparam):
+    def save_graph(self,pddata,xparam,filename = "temp.jpg"):
         temp = pddata[xparam].value_counts().sort_index().to_frame()
         temp.plot(kind='bar')
-        plt.savefig(f'./risk_server/Data/temp.jpg', dpi=300)
+        plt.savefig(f'./risk_server/Data/'+filename, dpi=400)
         return
 
+    def select_save_graph(self,data,filename = "temp.jpg"):
+        xparam = data.pop("value_count")
+        result = self.select_data(data)
+        self.save_graph(result,xparam,filename)
+        return
