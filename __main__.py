@@ -10,10 +10,10 @@ CORS(app, resources={r'*': {'origins': '*'}})
 vis = Visualizer("20221118_cid_freq_srs.csv")
 
 
-@app.route('/params')
+@app.route('/params',methods=['GET','POST'])
 def params():
     data = request.json
-
+    print(data)
     vis.select_save_graph(data)
     return send_file(f'Data/temp.jpg', mimetype='image/gif')
 
